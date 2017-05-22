@@ -11,6 +11,9 @@ use Cake\ORM\Entity;
  * @property string $ruc
  * @property string $logo
  * @property int $estado_id
+ * @property int $latitud
+ * @property int $longitud
+ * @property int $ciudad
  *
  * @property \App\Model\Entity\Estado $estado
  */
