@@ -39,7 +39,7 @@ class ProductosController extends AppController
      */
     public function getAdmin() {
         $this->viewBuilder()->layout(false);
-        
+        $this->Productos->recover();
         $productos = $this->Productos->find()
             ->contain(['ProductoImages']);
                 
@@ -128,15 +128,19 @@ class ProductosController extends AppController
             
             $producto = $this->Productos->patchEntity($producto, $this->request->data);
             
-            // Brochure
-            $dst_brochure = WWW_ROOT . "files". DS . 'brochures' . DS . $producto->brochure;
-            $src_brochure = WWW_ROOT . "tmp" . DS . $producto->brochure;
-
+            if ($producto->brochure) {
+                // Brochure
+                $dst_brochure = WWW_ROOT . "files". DS . 'brochures' . DS . $producto->brochure;
+                $src_brochure = WWW_ROOT . "tmp" . DS . $producto->brochure;
+            }
+            
             if ($this->Productos->save($producto)) {
                 // move file
                 
-                if (file_exists($src_brochure)) {
-                    rename($src_brochure, $dst_brochure);
+                if ($producto->brochure) {
+                    if (file_exists($src_brochure)) {
+                        rename($src_brochure, $dst_brochure);
+                    }
                 }
                 
                 foreach ($producto->producto_images as $producto_image) {

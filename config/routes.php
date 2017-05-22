@@ -89,6 +89,10 @@ Router::scope('/', function ($routes) {
             'getAdmin' => [
                 'action' => 'getAdmin',
                 'method' => 'GET'
+            ],
+            'getHeader' => [
+                'action' => 'getHeader',
+                'method' => 'GET'
             ]
         ]
     ]);

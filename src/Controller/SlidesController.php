@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Filesystem\Folder;
+use Cake\Filesystem\File;
 
 /**
  * Slides Controller
@@ -12,7 +14,7 @@ class SlidesController extends AppController
 {
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['index']);
+        $this->Auth->allow(['index', 'getHeader']);
     }
 
     /**
@@ -38,6 +40,17 @@ class SlidesController extends AppController
                 
         $this->set(compact('slides'));
         $this->set('_serialize', ['slides']);
+    }
+
+    public function getHeader() {
+        $path = 'img/headers/';
+        $dir = new Folder($path);
+        $files = $dir->find();
+        
+        $file = $path . $files[rand(0, sizeof($files) - 1)];
+        
+        $this->set(compact('file'));
+        $this->set('_serialize', ['file']);
     }
 
     /**
