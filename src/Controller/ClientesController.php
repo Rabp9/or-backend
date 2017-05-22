@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Utility\Hash;
 
 /**
  * Clientes Controller
@@ -12,7 +13,7 @@ class ClientesController extends AppController
 {
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['index']);
+        $this->Auth->allow(['index', 'getCiudades', 'getClientesByCiudad']);
     }
 
     /**
@@ -29,7 +30,35 @@ class ClientesController extends AppController
         $this->set(compact('clientes'));
         $this->set('_serialize', ['clientes']);
     }
+    
+    public function getClientesByCiudad($ciudad = null) {
+        $ciudad = $this->request->param('ciudad');
+        
+        $clientes = $this->Clientes->find()
+            ->where([
+                'ciudad' => $ciudad,
+                'estado_id' => 1
+            ]);
+        
+        $this->set(compact('clientes'));
+        $this->set('_serialize', ['clientes']);
+    }
 
+
+    public function getCiudades() {
+        $this->viewBuilder()->layout(false);
+        
+        $clientes = $this->Clientes->find()
+            ->distinct(['Clientes.ciudad'])
+            ->select(['Clientes.ciudad'])
+            ->where(['Clientes.estado_id' => 1])->toArray();
+        
+        $ciudades = Hash::extract($clientes, '{n}.ciudad');
+        
+        $this->set(compact('ciudades'));
+        $this->set('_serialize', ['ciudades']);
+    }
+    
     /**
      * Get Admin method
      *

@@ -35,6 +35,7 @@ class ProductosTable extends Table
         $this->table('productos');
         $this->displayField('title');
         $this->primaryKey('id');
+        $this->addBehavior('Tree');
 
         $this->belongsTo('Estados', [
             'foreignKey' => 'estado_id',
@@ -45,5 +46,26 @@ class ProductosTable extends Table
             'foreignKey' => 'producto_id'
         ]);
         
+    }
+    
+    public function findCustomTreeList(Query $query, array $options) {
+        $results = $this->find()
+            ->select(['id', 'lft', 'rght', 'title'])
+            ->order(['lft' => 'ASC'])
+            ->toArray();
+        
+        debug(sizeof($results));
+        for ($i = 0; $i < sizeof($results); $i++) {
+            if ($i != 0) {
+                $v_current = $results[$i];
+                for ($j = $i; $j == 0; $j--) {
+                    $v_compare = $results[$j];
+                    if ($v_current->lft < $_compare->rght) {
+                        $results[$i]->title = '_' . $results[$i]->title;
+                    }
+                }
+            }
+        }
+        return $results;
     }
 }

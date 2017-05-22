@@ -113,6 +113,14 @@ Router::scope('/', function ($routes) {
             'deleteImage' => [
                 'action' => 'deleteImage',
                 'method' => 'POST'
+            ],
+            'getTreeList' => [
+                'action' => 'getTreeList',
+                'method' => 'GET'
+            ],
+            'previewBrochure/' => [
+                'action' => 'previewBrochure',
+                'method' => 'POST'
             ]
         ]
     ]);
@@ -172,6 +180,14 @@ Router::scope('/', function ($routes) {
             ],
             'getAdmin' => [
                 'action' => 'getAdmin',
+                'method' => 'GET'
+            ],
+            'getCiudades' => [
+                'action' => 'getCiudades',
+                'method' => 'GET'
+            ],
+            'getClientesByCiudad/:ciudad' => [
+                'action' => 'getClientesByCiudad',
                 'method' => 'GET'
             ]
         ]
