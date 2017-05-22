@@ -114,13 +114,17 @@ Router::scope('/', function ($routes) {
                 'action' => 'deleteImage',
                 'method' => 'POST'
             ],
-            'getTreeList' => [
+            'getTreeList/:spacer' => [
                 'action' => 'getTreeList',
                 'method' => 'GET'
             ],
             'previewBrochure/' => [
                 'action' => 'previewBrochure',
                 'method' => 'POST'
+            ],
+            'getRootProductos' => [
+                'action' => 'getRootProductos',
+                'method' => 'GET'
             ]
         ]
     ]);

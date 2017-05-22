@@ -12,7 +12,8 @@ class ProductosController extends AppController
 {
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['index', 'getPages', 'getLineasProductos', 'view', 'download']);
+        $this->Auth->allow(['index', 'getPages', 'getLineasProductos', 'view', 
+            'download', 'getTreeList', 'getRootProductos']);
     }
 
     /**
@@ -51,7 +52,9 @@ class ProductosController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function getTreeList() {
+    public function getTreeList($spacer = null) {
+        $spacer = $this->request->param('spacer');
+        
         $this->viewBuilder()->layout(false);
         $this->Productos->recover();
         $productos = $this->Productos->find()
@@ -66,7 +69,7 @@ class ProductosController extends AppController
                 for ($j = $i - 1; $j >= 0; $j--) {
                     $v_compare = $productos[$j];
                     if ($v_current->lft < $v_compare->rght) {
-                        $productos[$i]->title = '_' . $productos[$i]->title;
+                        $productos[$i]->title = $spacer . $productos[$i]->title;
                     }
                 }
             }
@@ -86,11 +89,31 @@ class ProductosController extends AppController
         $producto = $this->Productos->get($id, [
             'contain' => ['ProductoImages']
         ]);
+        
+        $hijos = $this->Productos->find()
+            ->where([
+                'parent_id' => $producto->id,
+                'estado_id' => 1
+            ]);
 
-        $this->set(compact('producto'));
-        $this->set('_serialize', ['producto']);
+        $this->set(compact('producto', 'hijos'));
+        $this->set('_serialize', ['producto', 'hijos']);
     }
-
+    
+    public function getRootProductos() {
+        $this->viewBuilder()->layout(false);
+        
+        $productos = $this->Productos->find()
+            ->contain(['ProductoImages'])
+            ->where([
+                'estado_id' => 1,
+                'parent_id is' => null
+            ]);
+                
+        $this->set(compact('productos'));
+        $this->set('_serialize', ['productos']);
+    }
+    
     /**
      * Add method
      *
