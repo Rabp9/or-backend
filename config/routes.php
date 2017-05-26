@@ -129,6 +129,10 @@ Router::scope('/', function ($routes) {
             'getRootProductos' => [
                 'action' => 'getRootProductos',
                 'method' => 'GET'
+            ],
+            'remove' => [
+                'action' => 'remove',
+                'method' => 'POST'
             ]
         ]
     ]);
@@ -182,10 +186,6 @@ Router::scope('/', function ($routes) {
     ]);
     $routes->resources('Clientes', [
         'map' => [
-            'preview/' => [
-                'action' => 'preview',
-                'method' => 'POST'
-            ],
             'getAdmin' => [
                 'action' => 'getAdmin',
                 'method' => 'GET'

@@ -59,7 +59,7 @@ class ProductosController extends AppController
         $this->Productos->recover();
         $productos = $this->Productos->find()
             ->where(['estado_id' => 1])
-            ->select(['id', 'lft', 'rght', 'title'])
+            ->select(['id', 'lft', 'rght', 'title', 'type'])
             ->order(['lft' => 'ASC'])
             ->toArray();
         
@@ -315,4 +315,21 @@ class ProductosController extends AppController
         return $response;
     }
     
+    public function remove() {
+        $producto = $this->Productos->get($this->request->getData('id'));
+        
+        if ($this->Productos->delete($producto)) {
+            $message = [
+                "type" => "success",
+                "text" => "El producto fue eliminado con éxito"
+            ];
+        } else {
+            $message = [
+                "type" => "error",
+                "text" => "El producto no fue eliminado con éxito",
+            ];
+        }
+        
+        $this->set(compact("message"));
+    }
 }

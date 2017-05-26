@@ -9,7 +9,6 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $razon_social
  * @property string $ruc
- * @property string $logo
  * @property int $estado_id
  * @property int $latitud
  * @property int $longitud
