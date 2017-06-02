@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * TipoSugerencias Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Estados
+ * @property \Cake\ORM\Association\HasMany $DetalleSugerencias
  *
  * @method \App\Model\Entity\TipoSugerencia get($primaryKey, $options = [])
  * @method \App\Model\Entity\TipoSugerencia newEntity($data = null, array $options = [])
@@ -38,6 +39,10 @@ class TipoSugerenciasTable extends Table
         $this->belongsTo('Estados', [
             'foreignKey' => 'estados_id',
             'joinType' => 'INNER'
+        ]);
+        
+        $this->hasMany('DetalleSugerencias', [
+            'foreignKey' => 'tipo_sugerencia_id'
         ]);
     }
 }

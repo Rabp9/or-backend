@@ -222,6 +222,10 @@ Router::scope('/', function ($routes) {
                 'action' => 'getAdmin',
                 'method' => 'GET'
             ],
+            'removeDetalle' => [
+                'action' => 'removeDetalle',
+                'method' => 'POST'
+            ]
         ]
     ]);
     $routes->resources('Pages', [

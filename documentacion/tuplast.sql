@@ -33,7 +33,7 @@ CREATE TABLE `clientes` (
   PRIMARY KEY (`id`,`estado_id`),
   UNIQUE KEY `ruc_UNIQUE` (`ruc`),
   KEY `fk_clientes_estados1_idx` (`estado_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'DWP GRUPO S.R.L.','20477241809','-8.1032165553156','-79.00602221489','Trujillo',1),(2,'CORPORACION MEGA CONSTRUCCIONES S.A.C.','20481503575','-8.1132406754886','-79.026179015636','Trujillo',1),(3,'CONSTRUCTORA SANCHEZ CERRO EMPRESA INDIVIDUAL DE R','20526203501','-4.903689564484','-80.68642616272','Sullana',1),(4,'RC CONSTRUCTORES & CONSULTORES S.A.C.','20539769309','-8.1054497650411','-79.020294249058','Trujillo',1),(5,'INVERSIONES CORAL S.A.C.','20531614993','-12.057016169241','-77.142407298088','Callao',1),(6,'CORPORACION CONSULTING EDSUR S.A.C.','20601114870','-8.1075568308656','-79.024132490158','Trujillo',1),(7,'INVERSIONES AGRICOLAS INKA BANANA S.A.C.','20601584108','-5.18991097627','-80.6349525601','Piura',1),(8,'MARYTERE CONSTRUCTORA GLORIABAMBA S.A.C','20529500158','-7.81392765869','-78.045271039','Huamachuco',1),(9,'INVERSIONES GLARK S.R.L','20482840516','-8.11986309617','-79.0394626558','Trujillo',1),(10,'SIEGERPLAST PERU S.A.C.','20600523105','-8.1281024671','-79.04221192','Trujillo',1),(11,'FERRETERIA & INDUSTRIAS JHEYSON S.A.C.','20480290861','-5.76404017981','-78.4412884712','Bagua Grande',1),(12,'\"GRUPO FERRETERO SAN JUAN EL BAUTISTA S.A.C.\"','20600705190','-5.70998148798','-78.7994384766','Jaén',1),(13,'RIOJA CARRANZA JOSE HERNAN','10166879952','-6.76470824353','-79.8408490419','Chiclayo',1),(14,'ARENERA JAEN S.A.C','20114022838','-5.5982184563','-78.9580535889','Jaen',1);
+INSERT INTO `clientes` VALUES (1,'DWP GRUPO S.R.L.','20477241809','-8.1032165553156','-79.00602221489','Trujillo',1),(2,'CORPORACION MEGA CONSTRUCCIONES S.A.C.','20481503575','-8.1132406754886','-79.026179015636','Trujillo',1),(3,'CONSTRUCTORA SANCHEZ CERRO EMPRESA INDIVIDUAL DE R','20526203501','-4.903689564484','-80.68642616272','Sullana',1),(4,'RC CONSTRUCTORES & CONSULTORES S.A.C.','20539769309','-8.1054497650411','-79.020294249058','Trujillo',1),(5,'INVERSIONES CORAL S.A.C.','20531614993','-12.057016169241','-77.142407298088','Callao',1),(6,'CORPORACION CONSULTING EDSUR S.A.C.','20601114870','-8.1075568308656','-79.024132490158','Trujillo',1),(7,'INVERSIONES AGRICOLAS INKA BANANA S.A.C.','20601584108','-5.18991097627','-80.6349525601','Piura',1),(8,'MARYTERE CONSTRUCTORA GLORIABAMBA S.A.C','20529500158','-7.81392765869','-78.045271039','Huamachuco',1),(9,'INVERSIONES GLARK S.R.L','20482840516','-8.11986309617','-79.0394626558','Trujillo',1),(10,'SIEGERPLAST PERU S.A.C.','20600523105','-8.1281024671','-79.04221192','Trujillo',1),(11,'FERRETERIA & INDUSTRIAS JHEYSON S.A.C.','20480290861','-5.76404017981','-78.4412884712','Bagua Grande',1),(12,'\"GRUPO FERRETERO SAN JUAN EL BAUTISTA S.A.C.\"','20600705190','-5.70998148798','-78.7994384766','Jaén',1),(13,'RIOJA CARRANZA JOSE HERNAN','10166879952','-6.76470824353','-79.8408490419','Chiclayo',1),(14,'ARENERA JAEN S.A.C','20114022838','-5.70918482061','-78.8096375763','Jaen',1),(15,'N & F MONTOYA S.A.C.','20560003561','-8.1140744586','-79.0164104104','Trujillo',1),(16,'ZEGAPLAST EIRL','20539109040','-6.76393981274','-79.8407672346','Chiclayo',1),(17,'DISTRIBUIDORA Y ELECTRO ABIGAIL S.A.C.','20531661215','-9.07470028204','-78.5889923573','Chimbote',1),(18,'CORPORACION FERRETERA SAN FELIPE S.R.L.','20600044266','-5.17873852955','-80.6387901306','Lima',1),(19,'BECERRA BENITES MARIANELA','10035696518','-4.89469690632','-80.6847900152','Sullana',1),(20,'BRAVO ELLATOPA CARMEN ELEANA','10804793912','-5.18937005543','-80.6025668979','Piura',1),(21,'ZAPATA & CM E.I.R.L.','20600534077','-4.89452854336','-80.6839585304','Sullana',1),(22,'DISTRIBUCIONES JHAKELYN EIRL','20529636301','-7.61949499002','-78.0480739474','Cajabamba',1),(23,'DISTRIBUIDORA TUBONORTE S.A.C.','20477345680','-8.11128897897','-79.0132373571','Trujillo',1);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,6 +128,32 @@ INSERT INTO `convocatorias` VALUES (1,'Convocatoria 1','2017-04-19','doc-RB5rzb'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `detalle_sugerencias`
+--
+
+DROP TABLE IF EXISTS `detalle_sugerencias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `detalle_sugerencias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_sugerencia_id` int(11) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  PRIMARY KEY (`id`,`tipo_sugerencia_id`),
+  KEY `fk_detale_sugerencias_tipo_sugerencias1_idx` (`tipo_sugerencia_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `detalle_sugerencias`
+--
+
+LOCK TABLES `detalle_sugerencias` WRITE;
+/*!40000 ALTER TABLE `detalle_sugerencias` DISABLE KEYS */;
+INSERT INTO `detalle_sugerencias` VALUES (3,1,'afernandez@tuberiplasticaas.com'),(4,1,'mcedano@tuberiasplasticas.com'),(5,1,'jllanos@tuberiasplasticas.com');
+/*!40000 ALTER TABLE `detalle_sugerencias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `estados`
 --
 
@@ -163,7 +189,7 @@ CREATE TABLE `infos` (
   `data` varchar(60) DEFAULT NULL,
   `value` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +198,7 @@ CREATE TABLE `infos` (
 
 LOCK TABLES `infos` WRITE;
 /*!40000 ALTER TABLE `infos` DISABLE KEYS */;
-INSERT INTO `infos` VALUES (1,'nuestraHistoria','<p>Hace 6 a&ntilde;os, El Sr. Guillermo Vel&aacute;squez Castro en su af&aacute;n de realizar Negocios emprendedores y dar respuesta a la necesidad de mejorar el saneamiento y agua de la poblaci&oacute;n crea en conjunto con su socio la planta de fabrica...'),(2,'vision','<p>Liderar el mercado nacional en la fabricaci&oacute;n, distribuci&oacute;n y comercializaci&oacute;n de tuber&iacute;as y conexiones de PVC, reconocidos por nuestros productos de calidad, siendo percibidos como una empresa que busca constantemente la m...'),(3,'mision','<p>Somos una empresa fabricante de tuber&iacute;as de PVC que busca la satisfacci&oacute;n de sus clientes entregando productos de calidad y un servicio ajustado a sus necesidades que realiza sus operaciones siendo responsables con nuestros grupos de int...'),(4,'valor1','Trabajo en equipo'),(5,'valor2','Unidad'),(6,'valor3','Profesionalismo'),(7,'valor4','Lealtad'),(8,'valor5','Acción'),(9,'valor6','Servicio'),(10,'valor7','Tenacidad'),(11,'resumen_tuplast','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a finibus sapien, vel tristique nulla. Cras a velit tincidunt, euismod dolor non, posuere nulla. Nam blandit id massa ac maximus. Nam vel justo augue. Proin pharetra nunc lacus, laoreet posuere nisi dapibus in. Aliquam gravida nulla ante, eu aliquam tellus efficitur vel. In ac mauris lacinia, pellentesque odio sed, sagittis turpis. Integer luctus fermentum urna, eget eleifend mauris malesuada tristique. Fusce id pretium sapien. Pellentesque maximus nulla ac dui lacinia ornare.'),(12,'mensaje_clientes_1','Nuestros clientes confian en la calidad de nuestros productos'),(13,'mensaje_clientes_2','Son más de 40 empresas con las que trabajamos conjuntamente'),(14,'facebook_link','facebook-link'),(15,'twitter_link','twitter-link'),(16,'telf_oficina','044-659230'),(17,'email_1','ventas@tuberiasplasticas.com'),(18,'email_2','info@tuberiasplasticas.com'),(19,'telf_area_tecnica','982579831'),(20,'brochure','brochure'),(21,'telf_area_ventas','991904900');
+INSERT INTO `infos` VALUES (1,'nuestraHistoria','<p>Hace 6 a&ntilde;os, El Sr. Guillermo Vel&aacute;squez Castro en su af&aacute;n de realizar Negocios emprendedores y dar respuesta a la necesidad de mejorar el saneamiento y agua de la poblaci&oacute;n crea en conjunto con su socio la planta de fabrica...'),(2,'vision','<p>Liderar el mercado nacional en la fabricaci&oacute;n, distribuci&oacute;n y comercializaci&oacute;n de tuber&iacute;as y conexiones de PVC, reconocidos por nuestros productos de calidad, siendo percibidos como una empresa que busca constantemente la m...'),(3,'mision','<p>Somos una empresa fabricante de tuber&iacute;as de PVC que busca la satisfacci&oacute;n de sus clientes entregando productos de calidad y un servicio ajustado a sus necesidades que realiza sus operaciones siendo responsables con nuestros grupos de int...'),(4,'valor1','Trabajo en equipo'),(5,'valor2','Unidad'),(6,'valor3','Profesionalismo'),(7,'valor4','Lealtad'),(8,'valor5','Acción'),(9,'valor6','Servicio'),(10,'valor7','Tenacidad'),(11,'resumen_tuplast','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a finibus sapien, vel tristique nulla. Cras a velit tincidunt, euismod dolor non, posuere nulla. Nam blandit id massa ac maximus. Nam vel justo augue. Proin pharetra nunc lacus, laoreet posuere nisi dapibus in. Aliquam gravida nulla ante, eu aliquam tellus efficitur vel. In ac mauris lacinia, pellentesque odio sed, sagittis turpis. Integer luctus fermentum urna, eget eleifend mauris malesuada tristique. Fusce id pretium sapien. Pellentesque maximus nulla ac dui lacinia ornare.'),(12,'mensaje_clientes_1','Nuestros clientes confian en la calidad de nuestros productos'),(13,'mensaje_clientes_2','Son más de 40 empresas con las que trabajamos conjuntamente'),(14,'facebook_link','https://www.facebook.com/Tuplast'),(15,'twitter_link','twitter-link'),(16,'telf_oficina','044-659230 / 044 630116'),(17,'email_1','ventas@tuberiasplasticas.com'),(18,'email_2','info@tuberiasplasticas.com'),(19,'telf_area_tecnica','982579831'),(20,'brochure','brochure'),(21,'telf_area_ventas','991904900');
 /*!40000 ALTER TABLE `infos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,7 +271,7 @@ CREATE TABLE `pages` (
   `estado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`estado_id`),
   KEY `fk_pages_estados1_idx` (`estado_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,9 +322,10 @@ CREATE TABLE `producto_images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `producto_id` int(11) NOT NULL,
   `url` varchar(100) NOT NULL,
+  `title` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`,`producto_id`),
   KEY `fk_images_productos1_idx` (`producto_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -307,7 +334,7 @@ CREATE TABLE `producto_images` (
 
 LOCK TABLES `producto_images` WRITE;
 /*!40000 ALTER TABLE `producto_images` DISABLE KEYS */;
-INSERT INTO `producto_images` VALUES (7,1,'producto-iZLVTN'),(8,2,'producto-85dqBA'),(9,2,'producto-VXnuJb'),(10,3,'producto-Y6k9Yp'),(11,3,'producto-hf6LrZ'),(12,4,'producto-tA0J2U'),(13,4,'producto-A0Qk6h'),(14,4,'producto-QIYROD'),(15,5,'producto-ioyyH5'),(16,5,'producto-z0a750'),(17,6,'producto-zLPutj'),(18,6,'producto-3kNiLt'),(19,6,'producto-n09xXJ'),(20,6,'producto-WRn1hE'),(21,6,'producto-3jMIZo'),(22,7,'producto-xdMW3V'),(23,7,'producto-h0xH8t'),(24,8,'producto-Y28UAf'),(25,8,'producto-fxadlj'),(26,8,'producto-MYQ2d9'),(27,8,'producto-rAtF2u'),(28,8,'producto-rpsSgX'),(29,9,'producto-ie2wcw'),(30,9,'producto-6RiP3n'),(31,10,'producto-RQ4SxU'),(32,10,'producto-YuKDco'),(33,11,'producto-f702gZ'),(34,11,'producto-gGbfWY'),(35,11,'producto-sHwtRz'),(36,11,'producto-fBO1Hr'),(37,12,'producto-qVhDl8'),(38,12,'producto-JrmRzf'),(39,13,'producto-UzABw8'),(40,13,'producto-Bgw5Sl'),(41,14,'producto-wGDEuw'),(42,14,'producto-r8Sgv2'),(43,15,'producto-XhSXmt'),(44,15,'producto-Dhda0R'),(45,16,'producto-cphEfP'),(46,17,'producto-t893wD'),(47,18,'producto-w7KN86');
+INSERT INTO `producto_images` VALUES (7,1,'producto-iZLVTN',NULL),(8,2,'producto-85dqBA',NULL),(9,2,'producto-VXnuJb',NULL),(10,3,'producto-Y6k9Yp',NULL),(11,3,'producto-hf6LrZ',NULL),(12,4,'producto-tA0J2U',NULL),(13,4,'producto-A0Qk6h',NULL),(14,4,'producto-QIYROD',NULL),(15,5,'producto-ioyyH5',NULL),(16,5,'producto-z0a750',NULL),(17,6,'producto-zLPutj',NULL),(18,6,'producto-3kNiLt',NULL),(19,6,'producto-n09xXJ',NULL),(20,6,'producto-WRn1hE',NULL),(21,6,'producto-3jMIZo',NULL),(22,7,'producto-xdMW3V',NULL),(23,7,'producto-h0xH8t',NULL),(24,8,'producto-Y28UAf',NULL),(25,8,'producto-fxadlj',NULL),(26,8,'producto-MYQ2d9',NULL),(27,8,'producto-rAtF2u',NULL),(28,8,'producto-rpsSgX',NULL),(29,9,'producto-ie2wcw',NULL),(30,9,'producto-6RiP3n',NULL),(31,10,'producto-RQ4SxU',NULL),(32,10,'producto-YuKDco',NULL),(33,11,'producto-f702gZ',NULL),(34,11,'producto-gGbfWY',NULL),(35,11,'producto-sHwtRz',NULL),(36,11,'producto-fBO1Hr',NULL),(37,12,'producto-qVhDl8',NULL),(38,12,'producto-JrmRzf',NULL),(39,13,'producto-UzABw8',NULL),(40,13,'producto-Bgw5Sl',NULL),(41,14,'producto-wGDEuw',NULL),(42,14,'producto-r8Sgv2','sfsdsf'),(51,15,'producto-eXuBjI','Charizard'),(59,15,'producto-BZP7NI','X2');
 /*!40000 ALTER TABLE `producto_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -321,7 +348,7 @@ DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
-  `subtitle` varchar(100) DEFAULT NULL,
+  `subtitle` varchar(60) DEFAULT NULL,
   `body` longtext NOT NULL,
   `type` char(1) NOT NULL,
   `resumen` varchar(300) NOT NULL,
@@ -332,7 +359,7 @@ CREATE TABLE `productos` (
   `estado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`estado_id`),
   KEY `fk_productos_estados1_idx` (`estado_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,11 +436,10 @@ DROP TABLE IF EXISTS `tipo_sugerencias`;
 CREATE TABLE `tipo_sugerencias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(60) NOT NULL,
-  `email` varchar(80) NOT NULL,
   `estado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`estado_id`),
   KEY `fk_tipo_sugerencias_estados1_idx` (`estado_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -422,7 +448,7 @@ CREATE TABLE `tipo_sugerencias` (
 
 LOCK TABLES `tipo_sugerencias` WRITE;
 /*!40000 ALTER TABLE `tipo_sugerencias` DISABLE KEYS */;
-INSERT INTO `tipo_sugerencias` VALUES (1,'Ventas','ventas@tuplast.com',1);
+INSERT INTO `tipo_sugerencias` VALUES (1,'Ventas',1);
 /*!40000 ALTER TABLE `tipo_sugerencias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -466,4 +492,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-27  7:42:44
+-- Dump completed on 2017-06-02  3:16:15
