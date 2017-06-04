@@ -13,7 +13,7 @@ class ProductosController extends AppController
     public function initialize() {
         parent::initialize();
         $this->Auth->allow(['index', 'getPages', 'getLineasProductos', 'view', 
-            'download', 'getTreeList', 'getRootProductos']);
+            'download', 'getTreeList', 'getRootProductos', 'getProductosMain']);
     }
 
     /**
@@ -177,6 +177,36 @@ class ProductosController extends AppController
         $productos = $this->Productos->find()
             ->contain(['ProductoImages'])
             ->where(['estado_id' => 1, 'type' => 'L']);
+                
+        $this->set(compact('productos'));
+        $this->set('_serialize', ['productos']);
+    }
+    
+    /**
+     * Get Productos Main method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function getProductosMain() {
+        $this->viewBuilder()->layout(false);
+        
+        $productos = $this->Productos->find();
+        $productos
+            ->select([
+                'id',
+                'title',
+                'resumen',
+                'total_images' => $productos->func()->count('ProductoImages.id')
+            ])
+            ->leftJoinWith('ProductoImages')
+            ->group([
+                'Productos.id', 
+                'Productos.title',
+                'Productos.resumen'
+            ])
+            ->where(['estado_id' => 1])
+            ->contain('ProductoImages')
+            ->having(['total_images >' => 0]);
                 
         $this->set(compact('productos'));
         $this->set('_serialize', ['productos']);

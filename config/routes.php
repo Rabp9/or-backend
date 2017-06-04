@@ -102,6 +102,10 @@ Router::scope('/', function ($routes) {
                 'action' => 'getLineasProductos',
                 'method' => 'GET'
             ],
+            'getProductosMain/' => [
+                'action' => 'getProductosMain',
+                'method' => 'GET'
+            ],
             'getPages' => [
                 'action' => 'getPages',
                 'method' => 'GET'
@@ -236,6 +240,18 @@ Router::scope('/', function ($routes) {
             ],
             'getPages/:type' => [
                 'action' => 'getPages',
+                'method' => 'GET'
+            ],
+            'upload/' => [
+                'action' => 'upload',
+                'method' => 'POST'
+            ]
+        ]
+    ]);
+    $routes->resources('Asesorias', [
+        'map' => [
+            'getAdmin' => [
+                'action' => 'getAdmin',
                 'method' => 'GET'
             ],
             'upload/' => [
