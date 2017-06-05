@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: robertobocanegra.com    Database: rabp99_tuplast
+-- Host: localhost    Database: tuplast
 -- ------------------------------------------------------
--- Server version	5.5.51-38.2
+-- Server version	5.7.14
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,35 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `asesorias`
+--
+
+DROP TABLE IF EXISTS `asesorias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `asesorias` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `body` longtext CHARACTER SET latin1 NOT NULL,
+  `resumen` varchar(300) DEFAULT NULL,
+  `estado_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`estado_id`),
+  KEY `fk_asesorias_estados1_idx` (`estado_id`),
+  CONSTRAINT `fk_asesorias_estados1` FOREIGN KEY (`estado_id`) REFERENCES `estados` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `asesorias`
+--
+
+LOCK TABLES `asesorias` WRITE;
+/*!40000 ALTER TABLE `asesorias` DISABLE KEYS */;
+INSERT INTO `asesorias` VALUES (1,'Asesoría 1','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus, ipsum eget sollicitudin malesuada, neque dui consectetur est, et eleifend dolor quam quis enim. Proin dolor enim, semper vel euismod at, auctor nec enim. Nam erat urna, dictum a egestas eu, molestie non felis. Curabitur quis mattis dui. Vestibulum euismod lectus et nisl faucibus mattis. Maecenas interdum, diam vitae cursus hendrerit, dolor risus pulvinar mauris, vitae facilisis quam arcu elementum diam. Nunc fermentum vitae nisi et aliquam. Maecenas non sem bibendum, suscipit libero vel, elementum mauris. Vivamus ut accumsan elit. Ut a consequat mi, non rutrum nunc. Morbi id suscipit ex. Cras egestas laoreet ante.</p>\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Duis vel vulputate est. Phasellus porttitor venenatis finibus. In eu ipsum non tortor accumsan mollis vitae quis turpis. Pellentesque id dictum sem, vitae sollicitudin mauris. Etiam ultrices egestas ipsum, sed aliquam turpis pellentesque eget. Mauris at accumsan dolor. Morbi ac accumsan nulla. Sed ut urna non nunc vehicula imperdiet.</p>','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus, ipsum eget sollicitudin malesuada, neque dui consectetur est, et eleifend dolor quam quis enim.',1),(2,'Asesoría 2','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus, ipsum eget sollicitudin malesuada, neque dui consectetur est, et eleifend dolor quam quis enim. Proin dolor enim, semper vel euismod at, auctor nec enim. Nam erat urna, dictum a egestas eu, molestie non felis. Curabitur quis mattis dui. Vestibulum euismod lectus et nisl faucibus mattis. Maecenas interdum, diam vitae cursus hendrerit, dolor risus pulvinar mauris, vitae facilisis quam arcu elementum diam. Nunc fermentum vitae nisi et aliquam. Maecenas non sem bibendum, suscipit libero vel, elementum mauris. Vivamus ut accumsan elit. Ut a consequat mi, non rutrum nunc. Morbi id suscipit ex. Cras egestas laoreet ante.</p>\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Duis vel vulputate est. Phasellus porttitor venenatis finibus. In eu ipsum non tortor accumsan mollis vitae quis turpis. Pellentesque id dictum sem, vitae sollicitudin mauris. Etiam ultrices egestas ipsum, sed aliquam turpis pellentesque eget. Mauris at accumsan dolor. Morbi ac accumsan nulla. Sed ut urna non nunc vehicula imperdiet.</p>','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus, ipsum eget sollicitudin malesuada, neque dui consectetur est, et eleifend dolor quam quis enim.',1),(3,'Asesoría 3','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus, ipsum eget sollicitudin malesuada, neque dui consectetur est, et eleifend dolor quam quis enim. Proin dolor enim, semper vel euismod at, auctor nec enim. Nam erat urna, dictum a egestas eu, molestie non felis. Curabitur quis mattis dui. Vestibulum euismod lectus et nisl faucibus mattis. Maecenas interdum, diam vitae cursus hendrerit, dolor risus pulvinar mauris, vitae facilisis quam arcu elementum diam. Nunc fermentum vitae nisi et aliquam. Maecenas non sem bibendum, suscipit libero vel, elementum mauris. Vivamus ut accumsan elit. Ut a consequat mi, non rutrum nunc. Morbi id suscipit ex. Cras egestas laoreet ante.</p>\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Duis vel vulputate est. Phasellus porttitor venenatis finibus. In eu ipsum non tortor accumsan mollis vitae quis turpis. Pellentesque id dictum sem, vitae sollicitudin mauris. Etiam ultrices egestas ipsum, sed aliquam turpis pellentesque eget. Mauris at accumsan dolor. Morbi ac accumsan nulla. Sed ut urna non nunc vehicula imperdiet.</p>','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus, ipsum eget sollicitudin malesuada, neque dui consectetur est, et eleifend dolor quam quis enim.',1),(4,'Asesoría 4','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus, ipsum eget sollicitudin malesuada, neque dui consectetur est, et eleifend dolor quam quis enim. Proin dolor enim, semper vel euismod at, auctor nec enim. Nam erat urna, dictum a egestas eu, molestie non felis. Curabitur quis mattis dui. Vestibulum euismod lectus et nisl faucibus mattis. Maecenas interdum, diam vitae cursus hendrerit, dolor risus pulvinar mauris, vitae facilisis quam arcu elementum diam. Nunc fermentum vitae nisi et aliquam. Maecenas non sem bibendum, suscipit libero vel, elementum mauris. Vivamus ut accumsan elit. Ut a consequat mi, non rutrum nunc. Morbi id suscipit ex. Cras egestas laoreet ante.</p>\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Duis vel vulputate est. Phasellus porttitor venenatis finibus. In eu ipsum non tortor accumsan mollis vitae quis turpis. Pellentesque id dictum sem, vitae sollicitudin mauris. Etiam ultrices egestas ipsum, sed aliquam turpis pellentesque eget. Mauris at accumsan dolor. Morbi ac accumsan nulla. Sed ut urna non nunc vehicula imperdiet.</p>','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus, ipsum eget sollicitudin malesuada, neque dui consectetur est, et eleifend dolor quam quis enim.',1);
+/*!40000 ALTER TABLE `asesorias` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `clientes`
@@ -29,6 +58,7 @@ CREATE TABLE `clientes` (
   `latitud` varchar(100) DEFAULT NULL,
   `longitud` varchar(100) DEFAULT NULL,
   `ciudad` varchar(60) DEFAULT NULL,
+  `rubro` varchar(60) NOT NULL,
   `estado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`estado_id`),
   UNIQUE KEY `ruc_UNIQUE` (`ruc`),
@@ -42,7 +72,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'DWP GRUPO S.R.L.','20477241809','-8.1032165553156','-79.00602221489','Trujillo',1),(2,'CORPORACION MEGA CONSTRUCCIONES S.A.C.','20481503575','-8.1132406754886','-79.026179015636','Trujillo',1),(3,'CONSTRUCTORA SANCHEZ CERRO EMPRESA INDIVIDUAL DE R','20526203501','-4.903689564484','-80.68642616272','Sullana',1),(4,'RC CONSTRUCTORES & CONSULTORES S.A.C.','20539769309','-8.1054497650411','-79.020294249058','Trujillo',1),(5,'INVERSIONES CORAL S.A.C.','20531614993','-12.057016169241','-77.142407298088','Callao',1),(6,'CORPORACION CONSULTING EDSUR S.A.C.','20601114870','-8.1075568308656','-79.024132490158','Trujillo',1),(7,'INVERSIONES AGRICOLAS INKA BANANA S.A.C.','20601584108','-5.18991097627','-80.6349525601','Piura',1),(8,'MARYTERE CONSTRUCTORA GLORIABAMBA S.A.C','20529500158','-7.81392765869','-78.045271039','Huamachuco',1),(9,'INVERSIONES GLARK S.R.L','20482840516','-8.11986309617','-79.0394626558','Trujillo',1),(10,'SIEGERPLAST PERU S.A.C.','20600523105','-8.1281024671','-79.04221192','Trujillo',1),(11,'FERRETERIA & INDUSTRIAS JHEYSON S.A.C.','20480290861','-5.76404017981','-78.4412884712','Bagua Grande',1),(12,'\"GRUPO FERRETERO SAN JUAN EL BAUTISTA S.A.C.\"','20600705190','-5.70998148798','-78.7994384766','Jaén',1),(13,'RIOJA CARRANZA JOSE HERNAN','10166879952','-6.76470824353','-79.8408490419','Chiclayo',1),(14,'ARENERA JAEN S.A.C','20114022838','-5.70918482061','-78.8096375763','Jaen',1),(15,'N & F MONTOYA S.A.C.','20560003561','-8.1140744586','-79.0164104104','Trujillo',1),(16,'ZEGAPLAST EIRL','20539109040','-6.76393981274','-79.8407672346','Chiclayo',1),(17,'DISTRIBUIDORA Y ELECTRO ABIGAIL S.A.C.','20531661215','-9.07470028204','-78.5889923573','Chimbote',1),(18,'CORPORACION FERRETERA SAN FELIPE S.R.L.','20600044266','-5.17873852955','-80.6387901306','Piura',1),(19,'BECERRA BENITES MARIANELA','10035696518','-4.89469690632','-80.6847900152','Sullana',1),(20,'BRAVO ELLATOPA CARMEN ELEANA','10804793912','-5.18937005543','-80.6025668979','Piura',1),(21,'ZAPATA & CM E.I.R.L.','20600534077','-4.89452854336','-80.6839585304','Sullana',1),(22,'DISTRIBUCIONES JHAKELYN EIRL','20529636301','-7.61949499002','-78.0480739474','Cajabamba',1),(23,'DISTRIBUIDORA TUBONORTE S.A.C.','20477345680','-8.11128897897','-79.0132373571','Trujillo',1),(24,'PEREZ SANCHEZ ULICES ORLANDO','10107400082','-11.9114046522','-77.0488290489','Lima',1),(25,'MAQUINORTE','20445420990','-12.1088398042','-76.9739994407','Lima',1),(26,'CONSORCIO FERRETERO PLASTICA S.A.C.','20601197805','-8.11385937458','-79.0165391564','Trujillo',1),(27,'ARENERA JM SANTA ROSA SRL','20601430739','-5.69875064439','-78.8078592718','Jaén',1),(28,'INVERSIONES FERRONOR EIRL','20495883486','-6.68025081408','-78.5199227929','Bambamarca',1),(29,'EDICAS SAC','20275449751','-12.1274748678','-77.0261281729','Lima',1),(30,'HUEMURA SAC','20396466768','-8.11616421949','-79.026106596','Trujillo',1);
+INSERT INTO `clientes` VALUES (1,'DWP GRUPO S.R.L.','20477241809','-8.1032165553156','-79.00602221489','Trujillo','Canal Predial',1),(2,'CORPORACION MEGA CONSTRUCCIONES S.A.C.','20481503575','-8.1132406754886','-79.026179015636','Trujillo','',1),(3,'CONSTRUCTORA SANCHEZ CERRO EMPRESA INDIVIDUAL DE R','20526203501','-4.903689564484','-80.68642616272','Sullana','',1),(4,'RC CONSTRUCTORES & CONSULTORES S.A.C.','20539769309','-8.1054497650411','-79.020294249058','Trujillo','',1),(5,'INVERSIONES CORAL S.A.C.','20531614993','-12.057016169241','-77.142407298088','Callao','',1),(6,'CORPORACION CONSULTING EDSUR S.A.C.','20601114870','-8.1075568308656','-79.024132490158','Trujillo','',1),(7,'INVERSIONES AGRICOLAS INKA BANANA S.A.C.','20601584108','-5.18991097627','-80.6349525601','Piura','',1),(8,'MARYTERE CONSTRUCTORA GLORIABAMBA S.A.C','20529500158','-7.81392765869','-78.045271039','Huamachuco','',1),(9,'INVERSIONES GLARK S.R.L','20482840516','-8.11986309617','-79.0394626558','Trujillo','',1),(10,'SIEGERPLAST PERU S.A.C.','20600523105','-8.1281024671','-79.04221192','Trujillo','',1),(11,'FERRETERIA & INDUSTRIAS JHEYSON S.A.C.','20480290861','-5.76404017981','-78.4412884712','Bagua Grande','',1),(12,'\"GRUPO FERRETERO SAN JUAN EL BAUTISTA S.A.C.\"','20600705190','-5.70998148798','-78.7994384766','Jaén','',1),(13,'RIOJA CARRANZA JOSE HERNAN','10166879952','-6.76470824353','-79.8408490419','Chiclayo','',1),(14,'ARENERA JAEN S.A.C','20114022838','-5.70918482061','-78.8096375763','Jaen','',1),(15,'N & F MONTOYA S.A.C.','20560003561','-8.1140744586','-79.0164104104','Trujillo','',1),(16,'ZEGAPLAST EIRL','20539109040','-6.76393981274','-79.8407672346','Chiclayo','',1),(17,'DISTRIBUIDORA Y ELECTRO ABIGAIL S.A.C.','20531661215','-9.07470028204','-78.5889923573','Chimbote','',1),(18,'CORPORACION FERRETERA SAN FELIPE S.R.L.','20600044266','-5.17873852955','-80.6387901306','Piura','',1),(19,'BECERRA BENITES MARIANELA','10035696518','-4.89469690632','-80.6847900152','Sullana','',1),(20,'BRAVO ELLATOPA CARMEN ELEANA','10804793912','-5.18937005543','-80.6025668979','Piura','',1),(21,'ZAPATA & CM E.I.R.L.','20600534077','-4.89452854336','-80.6839585304','Sullana','',1),(22,'DISTRIBUCIONES JHAKELYN EIRL','20529636301','-7.61949499002','-78.0480739474','Cajabamba','',1),(23,'DISTRIBUIDORA TUBONORTE S.A.C.','20477345680','-8.11128897897','-79.0132373571','Trujillo','',1),(24,'PEREZ SANCHEZ ULICES ORLANDO','10107400082','-11.9114046522','-77.0488290489','Lima','',1),(25,'MAQUINORTE','20445420990','-12.1088398042','-76.9739994407','Lima','',1),(26,'CONSORCIO FERRETERO PLASTICA S.A.C.','20601197805','-8.11385937458','-79.0165391564','Trujillo','',1),(27,'ARENERA JM SANTA ROSA SRL','20601430739','-5.69875064439','-78.8078592718','Jaén','',1),(28,'INVERSIONES FERRONOR EIRL','20495883486','-6.68025081408','-78.5199227929','Bambamarca','',1),(29,'EDICAS SAC','20275449751','-12.1274748678','-77.0261281729','Lima','',1),(30,'HUEMURA SAC','20396466768','-8.11616421949','-79.026106596','Trujillo','',1);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +91,7 @@ CREATE TABLE `controller_roles` (
   PRIMARY KEY (`id`,`rol_id`,`controller_id`),
   KEY `fk_controller_roles_roles1_idx` (`rol_id`),
   KEY `fk_controller_roles_controllers1_idx` (`controller_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +100,7 @@ CREATE TABLE `controller_roles` (
 
 LOCK TABLES `controller_roles` WRITE;
 /*!40000 ALTER TABLE `controller_roles` DISABLE KEYS */;
-INSERT INTO `controller_roles` VALUES (1,1,1,1),(2,1,2,1),(3,1,3,1),(4,1,4,1),(5,1,5,1),(6,1,6,1),(7,1,7,1),(8,1,8,1),(9,1,9,1),(10,1,10,1),(11,1,11,1);
+INSERT INTO `controller_roles` VALUES (1,1,1,1),(2,1,2,1),(3,1,3,1),(4,1,4,1),(5,1,5,1),(6,1,6,1),(7,1,7,1),(8,1,8,1),(9,1,9,1),(10,1,10,1),(11,1,11,1),(12,1,12,1);
 /*!40000 ALTER TABLE `controller_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +116,7 @@ CREATE TABLE `controllers` (
   `descripcion` varchar(60) NOT NULL,
   `controller_name` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +125,7 @@ CREATE TABLE `controllers` (
 
 LOCK TABLES `controllers` WRITE;
 /*!40000 ALTER TABLE `controllers` DISABLE KEYS */;
-INSERT INTO `controllers` VALUES (1,'Información General','infoGeneral'),(2,'Slider','slider'),(3,'Nosotros','nosotros'),(4,'Productos','productos'),(5,'Clientes','clientes'),(6,'Obras','obras'),(7,'Páginas','pages'),(8,'Convocatorias','convocatorias'),(9,'Tipo de Sugerencias','tipoSugerencias'),(10,'Roles','roles'),(11,'Usuarios','users');
+INSERT INTO `controllers` VALUES (1,'Información General','infoGeneral'),(2,'Slider','slider'),(3,'Nosotros','nosotros'),(4,'Productos','productos'),(5,'Clientes','clientes'),(6,'Obras','obras'),(7,'Páginas','pages'),(8,'Convocatorias','convocatorias'),(9,'Tipo de Sugerencias','tipoSugerencias'),(10,'Roles','roles'),(11,'Usuarios','users'),(12,'Asesorías','asesorias');
 /*!40000 ALTER TABLE `controllers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,7 +301,7 @@ CREATE TABLE `pages` (
   `estado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`estado_id`),
   KEY `fk_pages_estados1_idx` (`estado_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,6 +310,7 @@ CREATE TABLE `pages` (
 
 LOCK TABLES `pages` WRITE;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
+INSERT INTO `pages` VALUES (2,'Aseguramiento de la Calidad','PY','<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus, ipsum eget sollicitudin malesuada, neque dui consectetur est, et eleifend dolor quam quis enim. Proin dolor enim, semper vel euismod at, auctor nec enim. Nam erat urna, dictum a egestas eu, molestie non felis. Curabitur quis mattis dui. Vestibulum euismod lectus et nisl faucibus mattis. Maecenas interdum, diam vitae cursus hendrerit, dolor risus pulvinar mauris, vitae facilisis quam arcu elementum diam. Nunc fermentum vitae nisi et aliquam. Maecenas non sem bibendum, suscipit libero vel, elementum mauris. Vivamus ut accumsan elit. Ut a consequat mi, non rutrum nunc. Morbi id suscipit ex. Cras egestas laoreet ante.</p>\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Duis vel vulputate est. Phasellus porttitor venenatis finibus. In eu ipsum non tortor accumsan mollis vitae quis turpis. Pellentesque id dictum sem, vitae sollicitudin mauris. Etiam ultrices egestas ipsum, sed aliquam turpis pellentesque eget. Mauris at accumsan dolor. Morbi ac accumsan nulla. Sed ut urna non nunc vehicula imperdiet.</p>\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Praesent mi massa, fermentum sed pretium vel, molestie sed est. Mauris laoreet lobortis aliquam. Nulla pretium urna condimentum, mollis sapien ac, efficitur mi. Nullam finibus varius aliquet. Aenean eu lectus cursus, varius nunc ut, tincidunt nisl. Donec dapibus dui elementum mi ullamcorper, eu commodo tortor dignissim. Integer dignissim quis enim in pulvinar. Nam tristique scelerisque euismod. Duis elit lectus, semper eget posuere ac, sollicitudin laoreet mi. Donec ut sollicitudin nulla, vitae condimentum enim. Aliquam placerat quam nisi, a dignissim orci luctus ut. Nunc sodales convallis eros vel fermentum. Phasellus lacinia purus at justo vulputate congue nec vel sem. Suspendisse hendrerit iaculis eros eu lobortis. Nunc volutpat, odio id rhoncus venenatis, metus lacus eleifend metus, non rhoncus lacus nulla non leo. Curabitur et elit dui.</p>\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Praesent non consequat felis, id placerat dui. Phasellus posuere suscipit eros ac porttitor. Etiam tempus elit ut lorem accumsan, ac porta diam pellentesque. Ut ornare, lectus in bibendum aliquet, augue erat efficitur erat, sed consequat urna sapien ac dolor. Phasellus sollicitudin ut mauris ac rutrum. Praesent at mattis lacus. Aenean ac dignissim odio, quis maximus purus. Morbi eu varius nisi. Morbi sed lorem nulla. Ut metus elit, elementum eget rhoncus in, fermentum non felis. Morbi nisl tortor, fringilla eget massa et, ullamcorper volutpat odio. Phasellus ornare congue luctus. Suspendisse eu tortor eros. Vestibulum tristique enim posuere, viverra odio eu, molestie arcu.</p>\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">In in arcu et est ornare posuere. Maecenas maximus metus quis lorem dapibus, feugiat finibus enim iaculis. Vivamus congue ut justo quis elementum. Fusce ipsum lorem, commodo vitae varius sed, bibendum ac nisl. Duis ullamcorper suscipit elit. Integer mauris justo, aliquet vel ullamcorper eget, pretium eu erat. Donec eu massa sed tellus congue ornare. Nullam molestie elementum luctus.</p>',1);
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -368,7 +399,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (2,'Área Predial',NULL,'<p>&Aacute;rea Predial</p>','A','Área Predial',NULL,NULL,1,18,1),(3,'Área Infraestructura',NULL,'<p>&Aacute;rea Infraestructura</p>','A','Área Infraestructura',NULL,NULL,19,28,1),(4,'Línea de Agua',NULL,'<p>L&iacute;nea de Agua</p>','L','Línea de Agua',NULL,'2',2,7,1),(5,'Línea Sanitaria',NULL,'<p>L&iacute;nea Sanitaria</p>','L','Línea Sanitaria',NULL,'2',8,11,1),(6,'Línea Eléctrica',NULL,'<p>L&iacute;nea El&eacute;ctrica</p>','L','Línea Eléctrica',NULL,'2',12,17,1),(7,'Línea Agua Potable',NULL,'<p>L&iacute;nea Agua Potable</p>','L','Línea Agua Potable',NULL,'3',20,23,1),(8,'Línea Alcantarillado',NULL,'<p>L&iacute;nea Alcantarillado</p>','L','Línea Alcantarillado',NULL,'3',24,27,1),(9,'Tubos Simple Presión','NTP 399.002 : 2015','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS SIMPLE PRESI&Oacute;N (PEGADO)</span></p>','P','TUBOS SIMPLE PRESIÓN (PEGADO)','doc-INkJtM','4',3,4,1),(10,'Tubos Presión con unión tipo rosca','NTP 399.166 : 2013','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PRESION CON UNION TIPO ROSCA (ROSCADO)</span></p>','P','TUBOS PRESION CON UNION TIPO ROSCA (ROSCADO)','doc-GHNxhZ','4',5,6,1),(11,'Tubos para Desague','NTP 399.003 : 2015','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PARA DESAGUE</span></p>','P','TUBOS PARA DESAGUE','doc-izQ0Li','5',9,10,1),(12,'Tubos para luz SEL','NTP 399.006 : 2015','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PARA LUZ SEL</span></p>','P','TUBOS PARA LUZ SEL','doc-0T36Te','6',13,14,1),(13,'Tubos para luz SAP','NTP 399.006 :2015','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PARA LUZ SAP</span></p>','P','TUBOS PARA LUZ SAP','doc-9T6U9w','6',15,16,1),(14,'Tubos para fluidos a presión','NTP - ISO 1452 : 2011','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PARA FLUIDOS A PRESI&Oacute;N (UNION FLEXIBLE)</span></p>','P','TUBOS PARA FLUIDOS A PRESIÓN (UNION FLEXIBLE)','doc-oaDVkp','7',21,22,1),(15,'Tubos para Alcantarillado','NTP - ISO 4435 : 2014','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PARA ALCANTARILLADO</span></p>','P','TUBOS PARA ALCANTARILLADO','doc-tNgXeF','8',25,26,1);
+INSERT INTO `productos` VALUES (2,'Área Predial',NULL,'<p>&Aacute;rea Predial</p>','A','Área Predial',NULL,NULL,1,18,1),(3,'Área Infraestructura',NULL,'<p>&Aacute;rea Infraestructura</p>','A','Área Infraestructura',NULL,NULL,19,28,1),(4,'Línea de Agua',NULL,'<p>L&iacute;nea de Agua</p>','L','Línea de Agua',NULL,'2',2,7,1),(5,'Línea Sanitaria',NULL,'<p>L&iacute;nea Sanitaria</p>','L','Línea Sanitaria',NULL,'2',8,11,1),(6,'Línea Eléctrica',NULL,'<p>Contamos con una amplia gama de productos:</p>\n<p>Nuestra l&iacute;nea el&eacute;ctrica desde 5/8&rdquo; hasta 2&rdquo; Clase liviana y &frac12;&rdquo; hasta 4&rdquo; Clase Pesada fabricados bajo cumplimiento de la norma NTP-399.006 : 2015</p>','L','Contamos con una amplia gama de productos:\nNuestra línea eléctrica desde 5/8” hasta 2” Clase liviana y ½” hasta 4” Clase Pesada fabricados bajo cumplimiento de la norma NTP-399.006 : 2015',NULL,'2',12,17,1),(7,'Línea Agua Potable',NULL,'<p>L&iacute;nea Agua Potable</p>','L','Línea Agua Potable',NULL,'3',20,23,1),(8,'Línea Alcantarillado',NULL,'<p>L&iacute;nea Alcantarillado</p>','L','Línea Alcantarillado',NULL,'3',24,27,1),(9,'Tubos Simple Presión','NTP 399.002 : 2015','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS SIMPLE PRESI&Oacute;N (PEGADO)</span></p>','P','TUBOS SIMPLE PRESIÓN (PEGADO)','doc-INkJtM','4',3,4,1),(10,'Tubos Presión con unión tipo rosca','NTP 399.166 : 2013','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PRESION CON UNION TIPO ROSCA (ROSCADO)</span></p>','P','TUBOS PRESION CON UNION TIPO ROSCA (ROSCADO)','doc-GHNxhZ','4',5,6,1),(11,'Tubos para Desague','NTP 399.003 : 2015','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PARA DESAGUE</span></p>','P','TUBOS PARA DESAGUE','doc-izQ0Li','5',9,10,1),(12,'Tubos para luz SEL','NTP 399.006 : 2015','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PARA LUZ SEL</span></p>','P','TUBOS PARA LUZ SEL','doc-0T36Te','6',13,14,1),(13,'Tubos para luz SAP','NTP 399.006 :2015','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PARA LUZ SAP</span></p>','P','TUBOS PARA LUZ SAP','doc-9T6U9w','6',15,16,1),(14,'Tubos para fluidos a presión','NTP - ISO 1452 : 2011','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PARA FLUIDOS A PRESI&Oacute;N (UNION FLEXIBLE)</span></p>','P','TUBOS PARA FLUIDOS A PRESIÓN (UNION FLEXIBLE)','doc-oaDVkp','7',21,22,1),(15,'Tubos para Alcantarillado','NTP - ISO 4435 : 2014','<p><span style=\"color: #212121; font-family: arial, sans-serif, serif, EmojiFont; font-size: 12.8px;\">TUBOS PARA ALCANTARILLADO</span></p>','P','TUBOS PARA ALCANTARILLADO','doc-tNgXeF','8',25,26,1);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -492,4 +523,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-03 18:47:15
+-- Dump completed on 2017-06-04  2:44:32
