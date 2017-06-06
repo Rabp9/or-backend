@@ -198,8 +198,16 @@ Router::scope('/', function ($routes) {
                 'action' => 'getCiudades',
                 'method' => 'GET'
             ],
+            'getRubros' => [
+                'action' => 'getRubros',
+                'method' => 'GET'
+            ],
             'getClientesByCiudad/:ciudad' => [
                 'action' => 'getClientesByCiudad',
+                'method' => 'GET'
+            ],
+            'getClientesByRubro/:rubro' => [
+                'action' => 'getClientesByRubro',
                 'method' => 'GET'
             ]
         ]

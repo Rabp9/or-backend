@@ -13,7 +13,7 @@ class ClientesController extends AppController
 {
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['index', 'getCiudades', 'getClientesByCiudad']);
+        $this->Auth->allow(['index', 'getCiudades', 'getClientesByCiudad', 'getRubros']);
     }
 
     /**
@@ -99,5 +99,30 @@ class ClientesController extends AppController
         }
         $this->set(compact('cliente', 'message'));
         $this->set('_serialize', ['cliente', 'message']);
+    }
+    
+    public function getRubros() {
+        $query = $this->Clientes->find()
+            ->distinct(['Clientes.rubro'])
+            ->select(['Clientes.rubro'])
+            ->where(['Clientes.estado_id' => 1])->toArray();
+        
+        $rubros = Hash::extract($query, '{n}.rubro');
+        
+        $this->set(compact('rubros'));
+        $this->set('_serialize', ['rubros']);
+    }
+    
+    public function getClientesByRubro($rubro = null) {
+        $rubro = $this->request->param('rubro');
+        
+        $clientes = $this->Clientes->find()
+            ->where([
+                'rubro' => $rubro,
+                'estado_id' => 1
+            ]);
+        
+        $this->set(compact('clientes'));
+        $this->set('_serialize', ['clientes']);
     }
 }
