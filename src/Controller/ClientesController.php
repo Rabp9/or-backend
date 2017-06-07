@@ -116,6 +116,7 @@ class ClientesController extends AppController
     public function getClientesByRubro($rubro = null) {
         $rubro = $this->request->param('rubro');
         
+        
         $clientes = $this->Clientes->find()
             ->where([
                 'rubro' => $rubro,
