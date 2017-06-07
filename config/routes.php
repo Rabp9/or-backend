@@ -93,7 +93,11 @@ Router::scope('/', function ($routes) {
             'getHeader' => [
                 'action' => 'getHeader',
                 'method' => 'GET'
-            ]
+            ],
+            'saveMany' => [
+                'action' => 'saveMany',
+                'method' => 'POST'
+            ],
         ]
     ]);
     $routes->resources('Productos', [

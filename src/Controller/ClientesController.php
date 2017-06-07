@@ -105,7 +105,8 @@ class ClientesController extends AppController
         $rubros = $this->Clientes->find()
             ->distinct(['Clientes.rubro'])
             ->select(['Clientes.rubro'])
-            ->where(['Clientes.estado_id' => 1])->toArray();
+            ->where(['Clientes.estado_id' => 1])
+            ->order(['Clientes.rubro DESC'])->toArray();
         
         foreach ($rubros as $k_rubro => $rubro) {
             $clientes = $this->Clientes->find()

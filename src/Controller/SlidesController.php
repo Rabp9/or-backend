@@ -24,7 +24,8 @@ class SlidesController extends AppController
      */
     public function index() {
         $slides = $this->Slides->find()
-            ->where(['estado_id' => 1]);
+            ->where(['estado_id' => 1])
+            ->order(['orden' => 'ASC']);
                 
         $this->set(compact('slides'));
         $this->set('_serialize', ['slides']);
@@ -36,7 +37,8 @@ class SlidesController extends AppController
      * @return \Cake\Network\Response|null
      */
     public function getAdmin() {        
-        $slides = $this->Slides->find();
+        $slides = $this->Slides->find()
+            ->order(['orden' => 'ASC']);
                 
         $this->set(compact('slides'));
         $this->set('_serialize', ['slides']);
@@ -155,5 +157,31 @@ class SlidesController extends AppController
             $str .= $characters[$rand];
         }
         return $str;
+    }
+    
+    public function saveMany() {
+        $slides = $this->Slides->newEntities($this->request->getData('slides'));
+
+        $r = true;
+        foreach ($slides as $slide) {
+            if (!$this->Slides->save($slide)) {
+                $r = false;
+            }
+        }
+        
+        if ($r) {
+            $message = [
+                "type" => "success",
+                "text" => "El orden de los slides fueron guardados correctamente"
+            ];
+        } else {
+            $message = [
+                "type" => "error",
+                "text" => "El orden de los slides no fueron guardados correctamente"
+            ];
+        }
+        
+        $this->set(compact('slides', 'message'));
+        $this->set('_serialize', ['slide', 'message']);
     }
 }
