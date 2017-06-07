@@ -102,12 +102,19 @@ class ClientesController extends AppController
     }
     
     public function getRubros() {
-        $query = $this->Clientes->find()
+        $rubros = $this->Clientes->find()
             ->distinct(['Clientes.rubro'])
             ->select(['Clientes.rubro'])
             ->where(['Clientes.estado_id' => 1])->toArray();
         
-        $rubros = Hash::extract($query, '{n}.rubro');
+        foreach ($rubros as $k_rubro => $rubro) {
+            $clientes = $this->Clientes->find()
+                ->where([
+                    'rubro' => $rubro->rubro,
+                    'estado_id' => 1
+                ]);
+            $rubros[$k_rubro]->clientes = $clientes;
+        }
         
         $this->set(compact('rubros'));
         $this->set('_serialize', ['rubros']);
@@ -115,7 +122,6 @@ class ClientesController extends AppController
     
     public function getClientesByRubro($rubro = null) {
         $rubro = $this->request->param('rubro');
-        
         
         $clientes = $this->Clientes->find()
             ->where([
