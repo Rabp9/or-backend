@@ -442,8 +442,8 @@ CREATE TABLE `slides` (
   `url` varchar(45) DEFAULT NULL,
   `contenido` text,
   `orden` int(11) DEFAULT NULL,
-  `color` varchar(6) DEFAULT NULL,
-  `color_bg` varchar(6) DEFAULT NULL,
+  `color` varchar(7) DEFAULT NULL,
+  `color_bg` varchar(7) DEFAULT NULL,
   `estado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`estado_id`),
   KEY `fk_slides_estados_idx` (`estado_id`)
@@ -456,7 +456,7 @@ CREATE TABLE `slides` (
 
 LOCK TABLES `slides` WRITE;
 /*!40000 ALTER TABLE `slides` DISABLE KEYS */;
-INSERT INTO `slides` VALUES (1,'Slide 1','slide-5MKiKV','Slide 1',NULL,NULL,NULL,1),(2,NULL,'slide-RyBtdT',NULL,NULL,NULL,NULL,1),(3,NULL,'slide-wfZFRr',NULL,NULL,NULL,NULL,1),(4,NULL,'slide-hiXSIk',NULL,NULL,NULL,NULL,1);
+INSERT INTO `slides` VALUES (1,'Slide 1','slide-5MKiKV','Slide 1',NULL,'#000000','#74c15c',1),(2,NULL,'slide-RyBtdT',NULL,NULL,'#ffffff','#74c15c',1),(3,NULL,'slide-wfZFRr',NULL,NULL,'#ffffff','#74c15c',1),(4,NULL,'slide-hiXSIk',NULL,NULL,'#ffffff','#74c15c',1);
 /*!40000 ALTER TABLE `slides` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -526,4 +526,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-06 18:20:14
+-- Dump completed on 2017-06-07 10:13:24
