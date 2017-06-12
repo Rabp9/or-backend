@@ -141,6 +141,14 @@ Router::scope('/', function ($routes) {
             'remove' => [
                 'action' => 'remove',
                 'method' => 'POST'
+            ],
+            'upload/' => [
+                'action' => 'upload',
+                'method' => 'POST'
+            ],
+            'getPublic' => [
+                'action' => 'getPublic',
+                'method' => 'GET'
             ]
         ]
     ]);

@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
+use Cake\ORM\TableRegistry;
 
 /**
  * Slides Controller
@@ -14,7 +15,7 @@ class SlidesController extends AppController
 {
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['index', 'getHeader']);
+        $this->Auth->allow(['index', 'getHeader', 'cleanImages']);
     }
 
     /**
@@ -183,5 +184,112 @@ class SlidesController extends AppController
         
         $this->set(compact('slides', 'message'));
         $this->set('_serialize', ['slide', 'message']);
+    }
+    
+    public function cleanImages() {
+        $this->viewBuilder()->setLayout(false);
+        
+        // tmp
+        $tmp = new Folder('tmp');
+        
+        $files = $tmp->find();
+        
+        foreach ($files as $file) {
+            $file = new File($tmp->pwd() . DS . $file);
+            $file->delete();
+        }
+        
+        // Brochures
+        $productosTable = TableRegistry::get('Productos');
+        $brochures = new Folder('files' . DS . 'brochures');
+        $files = $brochures->find();
+        
+        foreach ($files as $file) {
+            $producto = $productosTable->find()
+                ->where(['brochure' => $file])
+                ->first();
+            if ($producto === null) {
+                $file = new File($brochures->pwd() . DS . $file);
+                $file->delete();
+            }
+        }
+        
+        // Convocatorias
+        $convocatoriasTable = TableRegistry::get('Convocatorias');
+        $convocatorias = new Folder('files' . DS . 'convocatorias');
+        $files = $convocatorias->find();
+        
+        foreach ($files as $file) {
+            $convocatoria = $convocatoriasTable->find()
+                ->where(['documentacion' => $file])
+                ->first();
+            if ($convocatoria === null) {
+                $file = new File($convocatorias->pwd() . DS . $file);
+                $file->delete();
+            }
+        }
+        
+        // Obras
+        $obraImagesTable = TableRegistry::get('ObraImages');
+        $obraImages = new Folder('img' . DS . 'obras');
+        $files = $obraImages->find();
+        
+        foreach ($files as $file) {
+            $obraImage = $obraImagesTable->find()
+                ->where(['url' => $file])
+                ->first();
+            if ($obraImage === null) {
+                $file = new File($obraImages->pwd() . DS . $file);
+                $file->delete();
+            }
+        }
+        
+        // Politicas
+        $politicasTable = TableRegistry::get('Politicas');
+        $politicas = new Folder('img' . DS . 'politicas');
+        $files = $politicas->find();
+        
+        foreach ($files as $file) {
+            $politica = $politicasTable->find()
+                ->where(['url' => $file])
+                ->first();
+            if ($politica === null) {
+                $file = new File($politicas->pwd() . DS . $file);
+                $file->delete();
+            }
+        }
+        
+        // Productos
+        $productoImagesTable = TableRegistry::get('ProductoImages');
+        $productoImages = new Folder('img' . DS . 'productos');
+        $files = $productoImages->find();
+        
+        foreach ($files as $file) {
+            $productoImage = $productoImagesTable->find()
+                ->where(['url' => $file])
+                ->first();
+            if ($productoImage === null) {
+                $file = new File($productoImages->pwd() . DS . $file);
+                $file->delete();
+            }
+        }
+        
+        // Slides
+        $slidesTable = TableRegistry::get('Slides');
+        $slides = new Folder('img' . DS . 'slides');
+        $files = $slides->find();
+        
+        foreach ($files as $file) {
+            $slide = $slidesTable->find()
+                ->where(['url' => $file])
+                ->first();
+            if ($slide === null) {
+                $file = new File($slides->pwd() . DS . $file);
+                $file->delete();
+            }
+        }
+        
+        echo 'All done';
+        $this->render(false);
     }
 }

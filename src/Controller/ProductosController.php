@@ -13,7 +13,7 @@ class ProductosController extends AppController
     public function initialize() {
         parent::initialize();
         $this->Auth->allow(['index', 'getPages', 'getLineasProductos', 'view', 
-            'download', 'getTreeList', 'getRootProductos', 'getProductosMain']);
+            'download', 'getTreeList', 'getRootProductos', 'getProductosMain', 'getPublic']);
     }
 
     /**
@@ -88,6 +88,24 @@ class ProductosController extends AppController
     public function view($id = null) {
         $producto = $this->Productos->get($id, [
             'contain' => ['ProductoImages']
+        ]);
+        
+        $hijos = $this->Productos->find()
+            ->where([
+                'parent_id' => $producto->id,
+                'estado_id' => 1
+            ]);
+
+        $this->set(compact('producto', 'hijos'));
+        $this->set('_serialize', ['producto', 'hijos']);
+    }
+    
+    public function getPublic($id = null) {
+        $id = $this->request->query('id');
+        $producto = $this->Productos->get($id, [
+            'contain' => ['ProductoImages' => function($q) {
+                return $q->where(['tipo' => 'G']);
+            }]
         ]);
         
         $hijos = $this->Productos->find()
@@ -361,5 +379,33 @@ class ProductosController extends AppController
         }
         
         $this->set(compact("message"));
+    }
+    
+    public function upload() {
+        if ($this->request->is("post")) {
+            $image = $this->request->data["file"];
+            $filename = "producto-" . $this->randomString();
+            $url = WWW_ROOT . 'img' . DS . 'productos' . DS . $filename;
+                      
+            while (file_exists($url)) {
+                $filename = "producto-" . $this->randomString();
+                $url = WWW_ROOT . "tmp" . DS . $filename;
+            }
+            
+            if (move_uploaded_file($image["tmp_name"], $url)) {
+                $message = [
+                    "type" => "success",
+                    "text" => "La imagen fue subida con éxito"
+                ];
+            } else {
+                $message = [
+                    "type" => "error",
+                    "text" => "La imagen no fue subida con éxito",
+                ];
+            }
+            
+            $this->set(compact("message", "filename"));
+            $this->set("_serialize", ["message", "filename"]);
+        }
     }
 }
