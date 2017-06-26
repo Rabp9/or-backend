@@ -34,8 +34,9 @@ class HeadersController extends AppController
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function getByDescripcion($descripcion = null) {
-        $header = $this->Headers->findByDescripcion($descripcion);
+    public function getByDescripcion() {
+        $descripcion = $this->request->query('descripcion');
+        $header = $this->Headers->findByDescripcion($descripcion)->first();
 
         $this->set(compact('header'));
         $this->set('_serialize', ['header']);
