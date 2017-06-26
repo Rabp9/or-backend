@@ -80,6 +80,22 @@ Router::scope('/', function (RouteBuilder $routes) {
  */
 Router::scope('/', function ($routes) {
     $routes->extensions(['json']);   
+    $routes->resources('Headers', [
+        'map' => [
+            'getAdmin/' => [
+                'action' => 'getAdmin',
+                'method' => 'GET'
+            ],
+            'getByDescripcion' => [
+                'action' => 'getByDescripcion',
+                'method' => 'GET'
+            ],
+            'preview' => [
+                'action' => 'preview',
+                'method' => 'POST'
+            ]
+        ]
+    ]);
     $routes->resources('Slides', [
         'map' => [
             'preview/' => [
