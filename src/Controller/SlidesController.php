@@ -289,6 +289,32 @@ class SlidesController extends AppController
             }
         }
         
+        // Headers
+        $headersTable = TableRegistry::get('Headers');
+        $headers = new Folder('img' . DS . 'headers');
+        $files = $headers->find();
+        
+        foreach ($files as $file) {
+            $header = $headersTable->find()
+                ->where(['url' => $file])
+                ->first();
+            if ($header === null) {
+                $file = new File($headers->pwd() . DS . $file);
+                $file->delete();
+            }
+        }
+        
+        // Productos BD
+        $productoImages = new Folder('img' . DS . 'productos');
+        $productoImages_sql = $productoImagesTable->find()->toArray();
+        
+        foreach ($productoImages_sql as $productoImage) {
+            $aux = new File($productoImages->pwd() . DS . $productoImage->url);
+            if (!$aux->exists()) {
+                $productoImagesTable->delete($productoImage);
+            }
+        }
+
         echo 'All done';
         $this->render(false);
     }

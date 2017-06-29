@@ -205,6 +205,7 @@ class ProductosController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
+    /*
     public function getProductosMain() {
         $this->viewBuilder()->layout(false);
         
@@ -228,8 +229,42 @@ class ProductosController extends AppController
                 
         $this->set(compact('productos'));
         $this->set('_serialize', ['productos']);
-    }
+    }*/
     
+    public function getProductosMain() {
+        $this->viewBuilder()->layout(false);
+        
+        $productos = $this->Productos->find();
+        
+        $productos = $productos
+            ->select([
+                'id',
+                'title',
+                'resumen',
+                'total_images' => $productos->func()->count('ProductoImages.id')
+            ])
+            ->leftJoinWith('ProductoImages')
+            ->group([
+                'Productos.id', 
+                'Productos.title',
+                'Productos.resumen'
+            ])
+            ->having(['total_images >' => 0])
+            ->where(['estado_id' => 1])
+            ->order('rand()')
+            ->limit(3)->toArray();
+        
+        foreach ($productos as $producto) {
+            $productoImage = $this->Productos->ProductoImages->find()
+                ->where(['producto_id' => $producto->id])
+                ->order('rand()')
+                ->first();
+            $producto->productoImage = $productoImage;
+        }
+        
+        $this->set(compact('productos'));
+        $this->set('_serialize', ['productos']);
+    }
     /**
      * Get Pages method
      *
