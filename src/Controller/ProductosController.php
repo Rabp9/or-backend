@@ -250,7 +250,7 @@ class ProductosController extends AppController
                 'Productos.resumen'
             ])
             ->having(['total_images >' => 0])
-            ->where(['estado_id' => 1])
+            ->where(['estado_id' => 1, 'type' => 'L'])
             ->order('rand()')
             ->limit(3)->toArray();
         
