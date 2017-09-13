@@ -33,11 +33,16 @@ class PagesController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
-    public function getPages($type = null) {
-        $type = $this->request->params['type'];
-        $pages = $this->Pages->find()
-            ->where(['estado_id' => 1, 'menu' => $type]);
-
+    public function getPages() {
+        $types = $this->request->query;
+        $pages = array();
+        
+        foreach ($types as $type) {  
+            $pages[$type] = $this->Pages->find()
+                ->select(['id', 'title'])
+                ->where(['estado_id' => 1, 'menu' => $type]);
+        }
+        
         $this->set(compact('pages'));
         $this->set('_serialize', ['pages']);
     }

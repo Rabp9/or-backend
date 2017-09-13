@@ -12,7 +12,7 @@ class ObrasController extends AppController
 {
     public function initialize() {
         parent::initialize();
-        $this->Auth->allow(['index', 'view']);
+        $this->Auth->allow(['index', 'view', 'getRandom']);
     }
 
     /**
@@ -25,6 +25,7 @@ class ObrasController extends AppController
         
         $obras = $this->Obras->find()
             ->contain(['ObraImages'])
+            ->select(['id', 'title', 'resumen'])
             ->where(['estado_id' => 1]);
                 
         $this->set(compact('obras'));
@@ -172,5 +173,15 @@ class ObrasController extends AppController
         }
         $this->set(compact("message"));
         $this->set("_serialize", ["message"]);
+    }
+    
+    public function getRandom() {
+        $obra = $this->Obras->find()
+            ->contain(['ObraImages'])
+            ->select(['id', 'title', 'resumen'])
+            ->order('rand()')->first();
+
+        $this->set(compact('obra'));
+        $this->set('_serialize', ['obra']);
     }
 }

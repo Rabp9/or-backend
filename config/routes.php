@@ -213,6 +213,10 @@ Router::scope('/', function ($routes) {
             'deleteImage' => [
                 'action' => 'deleteImage',
                 'method' => 'POST'
+            ],
+            'getRandom' => [
+                'action' => 'getRandom',
+                'method' => 'GET'
             ]
         ]
     ]);
@@ -274,7 +278,7 @@ Router::scope('/', function ($routes) {
                 'action' => 'getAdmin',
                 'method' => 'GET'
             ],
-            'getPages/:type' => [
+            'getPages' => [
                 'action' => 'getPages',
                 'method' => 'GET'
             ],
