@@ -229,9 +229,9 @@ return [
              * the following line and set the port accordingly
              */
             //'port' => 'non_standard_port_number',
-            'username' => 'tuplast7_tuplast',
-            'password' => 'tuplast7',
-            'database' => 'tuplast7_tuplast',
+            'username' => 'rabp99_tuplast',
+            'password' => '12345678',
+            'database' => 'rabp99_tuplast',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],
